@@ -1,3 +1,5 @@
 This is notes/work flow for our project.
 
 Step 1: LD, PCA, & Structure. If time, start on one of the demographic analyses. 
+
+Now I'm editing the notes.
