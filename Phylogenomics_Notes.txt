@@ -1,5 +1,12 @@
 This is notes/work flow for our project.
+Step 1:
+LD: Emily
+PCA: Ellie (only high coverage)
+Structure: Lauren
+If time, start on one of the demographic analyses. 
 
-Step 1: LD, PCA, & Structure. If time, start on one of the demographic analyses. 
-
-Now I'm editing the notes.
+Week of Feb. 5 tasks:
+All: 
+Emily: Read about Haploview
+Lauren:
+Ellie: Read about PCAs, EIGENSOFT software, and determine if the database is the low or high coverage SNPs
