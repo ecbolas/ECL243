@@ -1,4 +1,9 @@
-These are Ellie's notes on working with Unix, Bash, Git, and Clusters
+These are Ellie's notes on working with Unix, Bash, Git, and Clusters. 
+
+References: 
+https://hackmd.io/CwNgzA7AxgnADHAtAIwCZgIyOAJgBw6IwCGyArIlOHHhniFHMGUA?both
+https://swcarpentry.github.io/git-novice/
+http://www.datacarpentry.org/shell-genomics/
 
 Jan. 17, 2018: Intro to Unix & Bash
 
