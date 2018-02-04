@@ -1,3 +1,5 @@
+These are Ellie's notes on working with Unix, Bash, Git, and Clusters
+
 Jan. 17, 2018: Intro to Unix & Bash
 
 Unix Command Line Shell: Bash 
