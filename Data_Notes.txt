@@ -1,0 +1,94 @@
+Jan. 17, 2018: Intro to Unix & Bash
+
+Unix Command Line Shell: Bash 
+	- command line interpreter, text based, not a GUI
+	- Provides file handling and scripting capabilities
+	- Shell purpose
+		- allows automation of repetitive tasks
+		- Uses commands to do processes in Unix
+	
+Command Line Set Up Instructions: 
+	- Created a directory structure in my system
+	- This should be straight forward from now on, I just need to make sure to switch into the directory that I want to use (my GitHub repo for this course.)
+
+Basic Command Line Commands
+	- Clear #gives a blank slate
+	- cd #change directory
+	- pwd #tells you the home directory (shows you where you are, type this when in doubt)
+	- cd dc_sample data #changed to the directory that we just made with sample data
+	- ls -F #ls is the command/piece of software, -F is the argument to tell it what you want it to do (shows you whats going (which files) on where you are)
+		- ls -lah #shows all files, including the “hidden” ones, which are hidden because the format is .filename
+	- cd untrimmed_fastq/ #to explore whats happening in this directory
+	- cat filename #opens the file in this directory
+	- head filename #shows first 10 lines of the file
+	- head -n 12 filename OR head -12 filename #gives the first 12 lines of the file
+	- tail -12 filename #the last 12 lines
+	- ctrl c #cancel, get back
+	- cd .. #takes up a directory
+	- head filename | cut -f1,2,3 #just grabs the first three columns
+
+File Formats
+	- Sequencing reads in the fastq format. Each line read starts with “@” . 2nd line is the sequence. 3rd line is something after a plus. 4th line is information about the quality of the read. Every 4 lines is a single read
+
+Creating Files 
+	- Whatever command > newfilename.fasq
+	- Head -n 4 filename > first_and_last.fastq #gives first 4 lines to this file
+	- Tail -n 4 filename >> first_and_last.fastq #adds the last 4 lines without over-writing the information that’s already in there
+		-Do this to filter your data for quality, keep only some reads
+		-Also, you don’t want to modify your original file, important to be able to reproduce your work flow
+		-Be really careful of over-writing!
+	- wc -l filename #tells you work count, how many lines in that file
+
+Filter Files
+	-grep is a search term
+	-grep NNNNNNNNNN #calling sequences with at least 10 Ns
+	- NNNNN in the read means that the sequencer machine or the software that needed to make a call couldn’t tell if it was a AGTC, so it’s unknown, so it gives you an N
+		- Number of Ns isn’t the only measure for quality. You can have ATCG reads that are also low quality, but calling the Ns gets rid of useless data
+	-| #pipe, combines the output of the first command into the next one
+		-grep NNNNNNNNNN filename | head #just the first ten lines of this call
+	- grep doesn’t return data in a fastq format, so you have to convert that
+	- grep NNNNNNNNNN -B1 -A2 filename | head #makes the head into a fastq file
+		- this returned dashes in the middle of the data. To get rid of the dashes, they did:
+	- grep NNNNNNNNNN -B1 -A2 filename | grep -v -p “^--" > bad_reads.fastq
+		- -v means remove and -p means anything that starts with…
+		
+GIT
+	- hackMD #online markdown documents, renders on the right side
+	- git add –all #adding the files you’ve made to git staging space
+	- git commit -m “message” #commits what you’ve done to git, and -m means give it a message
+	- git status #to check if you’re up to base
+
+January 24, 2018: Git, GitHub, SLURM & Clusters
+Making a Repo 
+	- To start a repo, make it in github, add files to it, then clone it
+	- To clone, copy and past stuff with https, paste into command line, this links the two
+	- Then, make a file on computer and put on the repo
+
+Make a New File and add to Rep
+	- Touch.txt #makes a new empty file, then use Notepad++ to edit that file
+	- git add - - all #this puts files in the staging area
+	- git commit -m “message” #saves it on the computer, has it “staged”
+	- git push origin master #puts it onto the web
+	- git pull matches computer to web
+
+Bashing Clusters
+	- Jeff writes in LaTek and Overleaf, which are text editors that connect with version control
+	- SSH #secure shell, helps connect to a remote computer (a cluster)
+	- We will use a remote computer for the stuff we need to do
+
+About Clusters and writing Bash Script: see Head_Node
+	- Bash script is a set of unix commands that you want to run all at once
+	- Why a cluster? Because it has a lot of cpu and space
+	- What a cluster is: you log into a head node with your ssh. You can do cat or read a file here, but you should never run code on this. The only thing the head node is supposed to do is control the whole cluster
+	- The head node is connected to computer nodes where the stuff happens
+		- Go to head node, write and submit a script to it, then head node sends that script to the compute nodes to do all the jobs, allocates CPUs by lab, head node keeps track of everything
+	- How to move files back and forth with head node: filezilla
+	- How to interact with compute nodes
+		- Submit a script to the queue
+		- Interactively: name which queue you want to add your job to and how much time and how much CPU you want using slurm script
+		- Now you can do whatever you want and things that you save get saved on disk on farm
+
+January 31, 2018 SLURM and Clusters Continued
+	- #in front of things allows for commenting in bash
+	- SLURM script: a bash script that can be submitted to the cluster (farm). That’s at the end of Jeff’s head_note, includes instructions for setting up some files, how much memory to use, how long to use, tells it to stop every time there’s an error, make it an error if a variable is indefined
+	- SLURM: a job handler, software to manage a computer cluster
