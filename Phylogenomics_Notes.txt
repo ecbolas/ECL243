@@ -9,3 +9,6 @@ Week of Feb. 5 to-do tasks:
 Emily: Read about Haploview, determine if we need to ask for PERL script
 Lauren: Lauren will do some things, Yes
 Ellie: Read about PCAs, EIGENSOFT software, and determine if the database is the low or high coverage SNPs. Make folders: data, data_output, scripts, figures, documents.  
+
+Week of Feb. 5 Updates
+Ellie: Done making folders
