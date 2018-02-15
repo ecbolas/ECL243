@@ -18,4 +18,6 @@ Ellie: 99% certain the databases are high coverage SNPs. Hovering the mouse over
 Ellie: EIGENSOFT: https://www.hsph.harvard.edu/alkes-price/eigensoft-frequently-asked-questions/, https://github.com/DReichLab/EIG
 The EIGENSOFT package combines functionality from our population genetics methods (Patterson et al. 2006) and our EIGENSTRAT stratification correction method (Price et al. 2006). The EIGENSTRAT method uses principal components analysis to explicitly model ancestry differences between cases and controls along continuous axes of variation; the resulting correction is specific to a candidate marker’s variation in frequency across ancestral populations, minimizing spurious associations while maximizing power to detect true associations
 
+Emily: Figured out how to unzip data files in unix and look at them. Also did the Haploview tutorial with sample data. Currently trying to figure out how to format the data to be put into Haploview. 
+
 
