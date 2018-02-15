@@ -10,7 +10,7 @@ Emily: Read about Haploview, determine if we need to ask for PERL script
 Lauren: Lauren will do some things, Yes
 Ellie: Read about PCAs, EIGENSOFT software, and determine if the database is the low or high coverage SNPs. Make folders: data, data_output, scripts, figures, documents.  
 
-Week of Feb. 5 Updates
+Week of Feb. 5 & 12 Updates
 Ellie: Done making folders
 
 Ellie: 99% certain the databases are high coverage SNPs. Hovering the mouse over them me shows a file description that says polar_bear.pooled.snp.txt.gz  has 18 polar bears and the brown bear file has 10. The low coverage data is for all 79 polar bears, but they only did high coverage for 18 bears, so this should be what we need to use. Also, when we open the files, we can compare information with table s2, which lists the high sequence individuals, including what depth they were sequenced at and a high coverage ID.
