@@ -12,3 +12,10 @@ Ellie: Read about PCAs, EIGENSOFT software, and determine if the database is the
 
 Week of Feb. 5 Updates
 Ellie: Done making folders
+
+Ellie: 99% certain the databases are high coverage SNPs. Hovering the mouse over them me shows a file description that says polar_bear.pooled.snp.txt.gz  has 18 polar bears and the brown bear file has 10. The low coverage data is for all 79 polar bears, but they only did high coverage for 18 bears, so this should be what we need to use. Also, when we open the files, we can compare information with table s2, which lists the high sequence individuals, including what depth they were sequenced at and a high coverage ID.
+
+Ellie: EIGENSOFT: https://www.hsph.harvard.edu/alkes-price/eigensoft-frequently-asked-questions/, https://github.com/DReichLab/EIG
+The EIGENSOFT package combines functionality from our population genetics methods (Patterson et al. 2006) and our EIGENSTRAT stratification correction method (Price et al. 2006). The EIGENSTRAT method uses principal components analysis to explicitly model ancestry differences between cases and controls along continuous axes of variation; the resulting correction is specific to a candidate marker’s variation in frequency across ancestral populations, minimizing spurious associations while maximizing power to detect true associations
+
+
