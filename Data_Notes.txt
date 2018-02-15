@@ -100,7 +100,7 @@ January 31, 2018 SLURM and Clusters Continued
 	- SLURM script: a bash script that can be submitted to the cluster (farm). That’s at the end of Jeff’s head_note, includes instructions for setting up some files, how much memory to use, how long to use, tells it to stop every time there’s an error, make it an error if a variable is indefined
 	- SLURM: a job handler, software to manage a computer cluster
 	
-2/14/18
+2/14/18 
 Folder for this project (to add files or whatever): C:\Users\ebola\ECL243
 Navigating on GitBash:
 	
@@ -114,4 +114,17 @@ $ cd data
 ebola@Bolas-XPS-13-9350 MINGW64 ~/ECL243/data (master)
 $ head polar_bear.pooled.snp.txt.gz  #tried to open this (b/c it's a text file) but it was gibberish. But, hovering the mouse shows me that this file has 18 polar bears and the brown bear file has 10, so that means it's the high coverage data, since they did all 79 polar bears at low coverage, but only 18 polar bears at high coverage. Also, when I open the text files in the correct kind of reader, I should be able to compare information with table s2, which lists the high sequence individuals and shows what exactly they were sequenced at
 
+Bash Scripts for talking with the cluster
 
+Start on Farm
+ssh yourself
+get into your directory (that you make)
+use nano to edit things or use text wrangler to open farm stuff on your computer
+then put in a script that says what directory you are in, the name of the output, hw much memroy, how long
+then tell it what queu you want to run on
+And basically Jeff typed a bunch of stuff really fast and I don't understand any of this
+
+another script: that is an array job where you tell it how many clones you want, then it makes that many clones of the script 
+
+This starts with you setting the directory you are working in, the 
+each CPU gets 8GB of RAM
