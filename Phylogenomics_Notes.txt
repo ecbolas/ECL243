@@ -22,3 +22,5 @@ Emily: Figured out how to unzip data files in unix and look at them. Also did th
 
 Lauren: Make progress on STRUCTURE to bring to the meeting on Friday. Put snp files onto the GITHUB. 
 
+Ellie: GITHUB file size limit is 100.00MB, File data/polar_bear.pooled.snp.txt is 217.09 MB.
+
