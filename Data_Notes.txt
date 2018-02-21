@@ -130,7 +130,7 @@ Bash Scripts for talking with the cluster
 	This starts with you setting the directory you are working in, the 
 	each CPU gets 8GB of RAM
 
-Feb. 21, 2018
+Feb. 21, 2018 -All future notes on HackMD
 
 Transform .gz to .tzt 
 	-Emily figured out how to do this, no notes taken
@@ -138,7 +138,9 @@ Transform .gz to .tzt
 Get SNP data ready for EIGENSOFT by using PLINK: About Pink
 	-run this in the command line (not the bash terminal)
 	
-Also, HackMD is a nice way to write code, here's my STRUCTURE code so far: https://hackmd.io/EYUwHAJg7AbDCMBaALCArAYxRGbFjAGYAGRYwgJhAzAwoE4BDe5IA===?both
+Lauren: Also, HackMD is a nice way to write code, here's my STRUCTURE code so far: https://hackmd.io/EYUwHAJg7AbDCMBaALCArAYxRGbFjAGYAGRYwgJhAzAwoE4BDe5IA===?both
+
+Ellie: https://hackmd.io/KwIxEYHYE4A4BYC00CmAzYj7AEwGZFZJhNYA2SWFWNABmhwEN4g=
 	
 	
 	
