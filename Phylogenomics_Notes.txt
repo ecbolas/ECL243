@@ -24,4 +24,7 @@ Lauren: Make progress on STRUCTURE to bring to the meeting on Friday. Put snp fi
 
 Ellie: GITHUB file size limit is 100.00MB, File data/polar_bear.pooled.snp.txt is 217.09 MB.
 
-My code using HackMD!: https://hackmd.io/EYUwHAJg7AbDCMBaALCArAYxRGbFjAGYAGRYwgJhAzAwoE4BDe5IA===?both
+2/21/18
+
+Lauren's code using HackMD!: https://hackmd.io/EYUwHAJg7AbDCMBaALCArAYxRGbFjAGYAGRYwgJhAzAwoE4BDe5IA===?both
+Ellie's HackMD: https://hackmd.io/KwIxEYHYE4A4BYC00CmAzYj7AEwGZFZJhNYA2SWFWNABmhwEN4g=
