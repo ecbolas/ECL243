@@ -138,3 +138,8 @@ Transform .gz to .tzt
 Get SNP data ready for EIGENSOFT by using PLINK: About Pink
 	-run this in the command line (not the bash terminal)
 	
+Also, HackMD is a nice way to write code, here's my STRUCTURE code so far: https://hackmd.io/EYUwHAJg7AbDCMBaALCArAYxRGbFjAGYAGRYwgJhAzAwoE4BDe5IA===?both
+	
+	
+	
+	
