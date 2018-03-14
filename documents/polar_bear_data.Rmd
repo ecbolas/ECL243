@@ -1,0 +1,92 @@
+---
+title: "polar_bear_data"
+output: html_notebook
+---
+
+Need to get the data into the correct hapmap format!
+First I'll use what Lauren did, then add on some of the stuff below.
+
+Read in the data and unite and fix columns, including adding columns, deleting columns
+```{r}
+library(tidyr)
+library(dplyr)
+pbdf1<- read.table("C:/Users/ebola/ECL243/data/polarbearattempt.txt", header=TRUE, comment.char = "", fill=T, sep="\t")
+#make the rs column which is a combination of chromo and position
+pbdf1 <- unite(pbdf1, rs, c(chromo, position), remove=FALSE)
+head (pbdf1)
+#make alleles column which is a combination of major and minor
+dat3 <- unite (pbdf1, alleles, c(major, minor), remove=FALSE)
+head(dat3)
+#add in the columns we need, with NAs
+dat3$strand <- 0
+dat3$assembly <- NA #change this to assembly# in unix, change chromo and position to chrom and pos in unix as well
+dat3$center <- NA
+dat3$protLSID <- NA
+dat3$assayLSID <- NA
+dat3$panelLSID <- NA
+dat3$QCcode <- NA
+head(dat3)
+#re-arrange the order of the columns
+dat4 <- dat3[c(1,2,3,4,30,31,32,33,34,35,36,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,22,21,22,23,24,25,26,27,28,29)]
+head(dat4)
+
+#cut the columns we don't need
+names(dat4) #getting the numbers of the columns we will cut
+dat5 <- dat4[,-12] 
+names(dat5)
+dat6 <- dat5[,-4]
+names(dat6)
+dat7 <- dat6[,-12]
+dat8 <- dat7[,-12]
+dat9 <- dat8[,-12]
+
+head (dat9)
+names(dat9)
+dat10 <- dat9[,-12]
+names(dat10)
+dat11 <- dat10[,-12]
+names(dat11)
+head(dat11)
+pbdf3 <- dat11
+head(pbdf3)
+
+```
+
+Ok, just need to fix the order, change _ to /, then fix strand and we are good.
+
+we need the order to be: rs#    alleles    chrom     pos     strand    assembly#    center    protLSID    assayLSID    panelLSID    QCcode    sample1 etc.
+
+```{r}
+names(pbdf3)
+pbdf4 <-pbdf3[c(1,11,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29)]
+head(pbdf4)
+
+#use gsub to replace one symbol with another in the alleles column
+
+
+pbdf4$alleles <- gsub("_", "/", pbdf4$alleles)
+head(pbdf4)
+
+#add in the pluses for strand
+pbdf4$strand <- rep('+', nrow(pbdf4))
+head(pbdf4)
+
+#double check "scaffold" is gone
+pbdf4$chromo <- gsub("scaffold", "", pbdf4$chromo)
+
+```
+
+
+Ok, the data is clean in R! Now we export, then Lauren will fix some things.
+
+```{r}
+
+#write.csv(pbdf4, file = "polarberSNPclean.csv", row.names = F) didn't see to write a csv...
+
+#write.table(pbdf4, "C:/Users/ebola/ECL243/data/polarbearSNPclean.txt", quote = F, sep="\t", row.names = F)
+
+
+
+```
+
+

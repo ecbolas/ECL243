@@ -1,0 +1,43 @@
+---
+title: "BB_haploview_format"
+output: html_notebook
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(dplyr)
+```
+
+
+Load brown bear data
+```{r}
+bbdat <- read.table("C:/Users/ebola/ECL243/data/blackbearSNPcleansubset.txt", comment.char = "", fill=T, sep="\t", header = TRUE)
+```
+
+Now I need to replace the numbers in the chromosomes so instead of the scaffold numbers, they are chromosome #s
+
+```{r}
+bbdat$chrom[bbdat$chrom == 79] <- 21
+bbdat$chrom[bbdat$chrom == 3] <- 1
+bbdat$chrom[bbdat$chrom == 5] <- 2
+bbdat$chrom[bbdat$chrom == 6] <- 3
+bbdat$chrom[bbdat$chrom == 8] <- 4
+bbdat$chrom[bbdat$chrom == 18] <- 5
+bbdat$chrom[bbdat$chrom == 35] <- 6
+bbdat$chrom[bbdat$chrom == 64] <- 7
+bbdat$chrom[bbdat$chrom == 21] <- 8 #bc I already changed 79 to 21
+bbdat$chrom[bbdat$chrom == 102] <- 9
+bbdat$chrom[bbdat$chrom == 124] <- 10
+bbdat$chrom[bbdat$chrom == 128] <- 11
+bbdat$chrom[bbdat$chrom == 131] <- 12
+bbdat$chrom[bbdat$chrom == 133] <- 13
+bbdat$chrom[bbdat$chrom == 139] <- 14
+bbdat$chrom[bbdat$chrom == 193] <- 15
+bbdat$chrom[bbdat$chrom == 207] <- 16
+bbdat$chrom[bbdat$chrom == 214] <- 17
+
+#write.table(bbdat, "C:/Users/ebola/ECL243/data/brownbearsubchromo.txt", quote = F, sep="\t", row.names = F)
+
+```
+

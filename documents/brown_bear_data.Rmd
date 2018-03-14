@@ -1,0 +1,74 @@
+---
+title: "brown_bear_data"
+output: html_notebook
+---
+
+The brown bear data is double the size of the brown bears, but it should work the same.
+
+Read in data and make the rs column and other columns with NAs.
+```{r}
+library(tidyr)
+library(dplyr)
+bbdf1<- read.table("C:/Users/ebola/ECL243/data/brown_bear.pooled.snp.txt", header=TRUE, comment.char = "", fill=T, sep="\t")
+head(bbdf1)
+#make the rs column which is a combination of chromo and position
+bbdf1 <- unite(bbdf1, rs, c(chromo, position), remove=FALSE)
+head (bbdf1)
+#make alleles column which is a combination of major and minor
+dat3 <- unite (bbdf1, alleles, c(major, minor), remove=FALSE)
+head(dat3)
+#add in the columns we need, with NAs
+dat3$strand <- 0
+dat3$assembly <- NA #change this to assembly# in unix, change chromo and position to chrom and pos in unix as well
+dat3$center <- NA
+dat3$protLSID <- NA
+dat3$assayLSID <- NA
+dat3$panelLSID <- NA
+dat3$QCcode <- NA
+head(dat3)
+```
+
+Re-arrange column order, cut columns we don't need
+```{r}
+#re-arrange the order of the columns
+names(dat3)
+dat4 <- dat3[c(1,6,2,3,22,23,24,25,26,27,28,4,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)]
+head(dat4)
+
+#cut the columns we don't need
+names(dat4) #getting the numbers of the columns we will cut
+dat5 <- dat4[,-12] 
+names(dat5)
+dat6 <- dat5[,-12]
+dat7 <- dat6[,-12]
+dat8 <- dat7[,-12]
+dat9 <- dat8[,-12]
+names (dat9)
+dat10 <- dat9[,-12]
+dat11 <- dat10[,-12]
+names(dat11)
+bbdf2 <- dat11
+head(bbdf2)
+```
+
+change _ to /, then fix strand, make sure scaffold is gone 
+```{r}
+#use gsub to replace one symbol with another in the alleles column
+
+bbdf2$alleles <- gsub("_", "/", bbdf2$alleles)
+head(bbdf2)
+
+#add in the pluses for strand
+bbdf2$strand <- rep('+', nrow(bbdf2))
+head(bbdf2)
+
+#double check "scaffold" is gone
+bbdf2$chromo <- gsub("scaffold", "", bbdf2$chromo)
+head(bbdf2)
+```
+
+Writing data to export, then Lauren will fix column headers in Unix and we are good.
+```{r}
+#write.table(bbdf2, "C:/Users/ebola/ECL243/data/blackbearSNPclean.txt", quote = F, sep="\t", row.names = F)
+```
+

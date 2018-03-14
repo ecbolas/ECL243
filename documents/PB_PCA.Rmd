@@ -1,0 +1,67 @@
+---
+title: "PB_PCA"
+output: html_notebook
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(dplyr)
+library(ggplot2) #I guess this is already in the tidyverse so I don't need to load
+```
+
+
+The polar bear SNPs PCA was run on tassel on the farm. Now those results will be turned into a PCA plot.
+
+Read in Data and Clean
+```{r}
+pbPCread <- read.table("C:/Users/ebola/ECL243//data/PCApbsubfulldata1.txt", comment.char = "", fill=T, sep="\t") #leaving header=true confused it, so I just read it in without, need to get rid of two rows
+
+#pbPCA <- pbPCA[-c(1,2)] this deleted columns, not rows!
+
+pbPCread1 <- pbPCread[-1,]
+pbPCA <- pbPCread1[-1,] #this data is almost read
+
+colnames(pbPCA) <- c("taxa", "PC1", "PC2", "PC3")
+pbPCA <- pbPCA[-1,] #columns renamed and extra rows removed
+```
+
+Plot data
+```{r}
+ggplot (data = pbPCA) +
+  geom_point(mapping = aes(x = PC1, y = PC2)) 
+#hooray this gave a PCA plot! Unfortuately, it looks really different from the PCA plot in the paper.
+
+#I want to rearrange the rows to make it easier to plot the east and west greenland bears.
+
+
+
+```
+
+I will try adding a column for East or West Greenland bears, then re-plot to see if this shows differences.
+```{r}
+pbPCA$location <- "West Greenland"
+pbPCA$location[1] <- "East Greenland"
+pbPCA$location[3] <- "East Greenland"
+pbPCA$location[4] <- "East Greenland"
+pbPCA$location[5] <- "East Greenland"
+pbPCA$location[7] <- "East Greenland"
+pbPCA$location[9] <- "East Greenland"
+pbPCA$location[11] <- "East Greenland"
+```
+
+Now plotting with East and West Greenland separate, ideally with East Greenland having plus shapes and West Greenland having crosses
+```{r}
+
+pbPCAplot<- ggplot (data = pbPCA, aes(PC1, PC2)) + #this means we are plotting the PC1 & PC2
+  geom_point(aes(shape = location, size = 4)) + #telling it that I want the shapes to change by location
+  scale_shape_manual(values = c(3,4)) + #telling it that I want crosses and pluses
+  theme(legend.position = "right" ) + #legend
+  theme_classic() + #white background
+  ggtitle("Polar Bear High-Coverage PCA")  #title
+pbPCAplot
+#ggsave("pbPCAplot.pdf")
+
+```
+
+
+
