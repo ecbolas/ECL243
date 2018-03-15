@@ -14,7 +14,7 @@ The polar bear SNPs PCA was run on tassel on the farm. Now those results will be
 
 Read in Data and Clean
 ```{r}
-pbPCread <- read.table("C:/Users/ebola/ECL243//data/PCApbsubfulldata1.txt", comment.char = "", fill=T, sep="\t") #leaving header=true confused it, so I just read it in without, need to get rid of two rows
+pbPCread <- read.table("C:/Users/ebola/ECL243//data_output/PCApbsubfulldata1.txt", comment.char = "", fill=T, sep="\t") #leaving header=true confused it, so I just read it in without, need to get rid of two rows
 
 #pbPCA <- pbPCA[-c(1,2)] this deleted columns, not rows!
 
@@ -61,6 +61,25 @@ pbPCAplot<- ggplot (data = pbPCA, aes(PC1, PC2)) + #this means we are plotting t
 pbPCAplot
 #ggsave("pbPCAplot.pdf")
 
+```
+
+Now plot again but, try with PCs as numeric (rather than factor data)
+
+```{r}
+pbPCAnumeric <- pbPCA
+pbPCAnumeric$PC1 <- as.numeric(as.character(pbPCAnumeric$PC1))
+pbPCAnumeric$PC2 <- as.numeric(as.character(pbPCAnumeric$PC2))
+str(pbPCAnumeric) #now PC1 is numeric for this data
+
+#plot as numeric but not log
+pbPCAplotnumeric<- ggplot (data = pbPCAnumeric, aes(PC1, PC2)) + #this means we are plotting the PC1 & PC2
+  geom_point(aes(shape = location)) + #telling it that I want the shapes to change by location
+  scale_shape_manual(values = c(3,4)) + #telling it that I want crosses and pluses
+  theme(legend.position = "bottom" ) + #legend
+  theme_classic() + #white background
+  ggtitle("Polar Bear High-Coverage PCA (with numeric data)") #title
+pbPCAplotnumeric # this looks good, data is grouped differetly...
+ggsave("pbPCAplotnumeric.pdf")
 ```
 
 

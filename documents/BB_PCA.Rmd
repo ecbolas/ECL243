@@ -15,7 +15,7 @@ library(dplyr)
 
 Read in Data and Clean
 ```{r}
-bbPCread <- read.table("C:/Users/ebola/ECL243/data/PCApbsubfullBrownbear1.txt", comment.char = "", fill=T, sep="\t") #leaving head=true confused it, so I just read it in without, need to get rid of two rows
+bbPCread <- read.table("C:/Users/ebola/ECL243/data_output/PCApbsubfullBrownbear1.txt", comment.char = "", fill=T, sep="\t") #leaving head=true confused it, so I just read it in without, need to get rid of two rows
 colnames(bbPCread) <- c("taxa", "PC1", "PC2", "PC3") #add header row
 
 #remove extra rows
@@ -68,6 +68,16 @@ bbPCAnumeric$PC1 <- as.numeric(as.character(bbPCAnumeric$PC1))
 bbPCAnumeric$PC2 <- as.numeric(as.character(bbPCAnumeric$PC2))
 str(bbPCAnumeric) #now PC1 is numeric for this data
 
+#plot as numeric but not log
+bbPCAplotnumeric<- ggplot (data = bbPCAnumeric, aes(PC1, PC2)) + #this means we are plotting the PC1 & PC2
+  geom_point(aes(shape = location)) + #telling it that I want the shapes to change by location
+  scale_shape_manual(values = c(3,4,8,15,1)) + #telling it that I want crosses and pluses
+  theme(legend.position = "bottom" ) + #legend
+  theme_classic() + #white background
+  ggtitle("Brown Bear High-Coverage PCA (with numeric data)") #title
+bbPCAplotnumeric # this looks good, like their data!
+ggsave("bbPCAplotnumeric.pdf")
+
 #now try to plot again with data as numeric
 #bbPCAplotlog<- ggplot (data = bbPCAnumeric, aes(PC1, PC2), scale ="globalminmax") + #this means we are plotting the PC1 & PC2
  # geom_point(aes(shape = location)) + #telling it that I want the shapes to change by location
@@ -111,11 +121,11 @@ bbPCAplotlog1 #this is pretty good, although it removed 2 data points, including
 
 
 #the PCA they made looked diagonally flipped from mine, so I want to try making those last 3 positive for PC1 and see what it looks like
-bbPCAposnumeric <- bbPCAnumeric
+#bbPCAposnumeric <- bbPCAnumeric
 
-bbPCAposnumeric$PC1[8] <- 687.7262
-bbPCAposnumeric$PC1[9] <- 709.7383
-bbPCAposAnumeric$PC1[10] <- 611.9418 #this one refuses to become positive
+#bbPCAposnumeric$PC1[8] <- 687.7262
+#bbPCAposnumeric$PC1[9] <- 709.7383
+#bbPCAposAnumeric$PC1[10] <- 611.9418 #this one refuses to become positive
 
 #now plot as log
 #bbPCAplotlog2<- ggplot (data = bbPCAposnumeric, aes(PC1, PC2)) + #this means we are plotting the PC1 & PC2
